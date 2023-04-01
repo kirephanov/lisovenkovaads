@@ -1,0 +1,221 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/icon-advertising-agency.ico' %}">
+    <title>LisovenkovaAds</title>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header">
+            <div class="wrapper">
+                <nav>
+                    <div class="nav">
+                        <div class="nav__item">
+                            <a href="{% url 'home' %}" class="nav__logo-link">
+                                <img src="{% static 'images/logo-advertising-agency.svg' %}" alt="Advertising  agency" class="nav__logo">
+                            </a>
+                        </div>
+                        <div class="nav__item">
+                            <div class="nav__links-container">
+                                <ul class="nav__links">
+                                    <li class="nav__links__item">
+                                        <a href="#about" class="nav__links-link">
+                                            О нас
+                                        </a>
+                                    </li>
+                                    <li class="nav__links__item">
+                                        <a href="#cases" class="nav__links-link">
+                                            Тарифы
+                                        </a>
+                                    </li>
+                                </ul>
+                                {% if request.user.is_authenticated %}
+                                <a href="{% url 'profile' %}" class="nav__btn">Войти</a>
+                                {% else %}
+                                <a href="{% url 'login' %}" class="nav__btn">Войти</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile menu -->
+                    <div class="mobile-menu">
+                        <div class="wrapper">
+                            <div class="mobile-nav" id="Mobile-nav">
+                                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+                                    <img src="{% static 'images/close-menu.svg' %}" alt="Close" class="mobile-menu__btn">
+                                </a>
+                                <a href="{% url 'home' %}" class="mobile__link"><img src="{% static 'images/logo-advertising-agency.svg' %}" alt="Advertising agency" class="mobile__link-logo"></a>
+                                {% if request.user.is_authenticated %}
+                                <a href="{% url 'profile' %}" class="mobile__link">Войти</a>
+                                {% else %}
+                                <a href="{% url 'login' %}" class="mobile__link">Войти</a>
+                                {% endif %}
+                                <a href="#about" class="mobile__link">О нас</a>
+                                <a href="#cases" class="mobile__link">Тарифы</a>
+                            </div>
+                            <div class="mobile-btn__container">
+                                <span onclick="openNav()" class="mobile-btn">
+                                    <img src="{% static 'images/mobile-menu.svg' %}" alt="Open" class="mobile-menu__btn">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Bunner -->
+                <div class="bunner">
+                    <div class="bunner__item bunner-info">
+                        <p class="bunner__title">
+                            Зарабатывайте <br> с показа рекламы
+                        </p>
+                        <p class="bunner__title__mobile">
+                            Зарабатывайте с показа рекламы
+                        </p>
+                        <p class="bunner__description">
+                            Задача организации, в реализации намеченных плановых заданий
+                        </p>
+                        <div class="bunner__btn-container">
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'profile' %}" class="bunner__btn">Подключить рекламу</a>
+                                {% else %}
+                                <a href="{% url 'login' %}" class="bunner__btn">Подключить рекламу</a>
+                                {% endif %}
+                        </div>
+                    </div>
+                    <div class="bunner__item bunner-icon">
+                        <img src="{% static 'images/Home/human.svg' %}" alt="" class="bunner-icon__img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About us -->
+    <section id="about">
+        <div class="wrapper">
+            <div class="about-us">
+                <p class="block-title">
+                    О нас
+                </p>
+                <div class="about-us__cards-container">
+                    <div class="about-us__cards">
+                        <div class="about-us__cards__item">
+                            <p class="about-us__cards__title">
+                                Экономьте
+                            </p>
+                            <p class="about-us__cards__description">
+                                Разнообразный опыт структуры организации требует от нас анализа модели развития
+                            </p>
+                            <img src="{% static 'images/Home/save-money.png' %}" alt="" class="about-us__cards__img">
+                        </div>
+    
+                        <div class="about-us__cards__border"></div>
+    
+                        <div class="about-us__cards__item">
+                            <p class="about-us__cards__title">
+                                Инструменты аналитики
+                            </p>
+                            <p class="about-us__cards__description">
+                                Разнообразный опыт структуры организации требует от нас анализа модели развития
+                            </p>
+                            <img src="{% static 'images/Home/business-analytics.png' %}" alt="" class="about-us__cards__img">
+                        </div>
+    
+                        <div class="about-us__cards__border"></div>
+                        
+                        <div class="about-us__cards__item">
+                            <p class="about-us__cards__title">
+                                Получайте подарки
+                            </p>
+                            <p class="about-us__cards__description">
+                                Разнообразный опыт структуры организации требует от нас анализа модели развития
+                            </p>
+                            <img src="{% static 'images/Home/gifts.png' %}" alt="" class="about-us__cards__img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases -->
+    <section id="cases">
+        <div class="wrapper">
+            <div class="cases">
+                <p class="block-title">
+                    Тарифы
+                </p>
+                <div class="cases__cards">
+                    <div class="cases__cards__item">
+                        <p class="cases__cards__card-title">
+                            Эконом
+                        </p>
+                        <p class="cases__cards__card-body">
+                            Равным образом новая модель организационной деятельности играет важную роль в формировании дальнейших направлений развития. Товарищи! начало повседневной работы по формированию позиции играет важную роль.
+                        </p>
+                        <a href="#" class="cases__cards__card-link">
+                            Подробнее
+                        </a>
+                    </div>
+                    <div class="cases__cards__item">
+                        <p class="cases__cards__card-title">
+                            Оптимальный
+                        </p>
+                        <p class="cases__cards__card-body">
+                            Равным образом новая модель организационной деятельности играет важную роль в формировании дальнейших направлений развития. Товарищи! начало повседневной работы по формированию позиции играет важную роль.
+                        </p>
+                        <a href="#" class="cases__cards__card-link">
+                            Подробнее
+                        </a>
+                    </div>
+                    <div class="cases__cards__item">
+                        <p class="cases__cards__card-title">
+                            Премиум
+                        </p>
+                        <p class="cases__cards__card-body">
+                            Равным образом новая модель организационной деятельности играет важную роль в формировании дальнейших направлений развития. Товарищи! начало повседневной работы по формированию позиции играет важную роль.
+                        </p>
+                        <a href="#" class="cases__cards__card-link">
+                            Подробнее
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сooperate with us -->
+    <section>
+        <div class="cooperate-bg">
+            <div class="wrapper">
+                <div class="cooperate">
+                    <p class="cooperate-title">
+                        Подключить рекламу
+                    </p>
+                    <div class="cooperate__btn-container">
+                        {% if request.user.is_authenticated %}
+                        <a href="{% url 'profile' %}" class="cooperate__btn">Начать</a>
+                        {% else %}
+                        <a href="{% url 'login' %}" class="cooperate__btn">Начать</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JS -->
+    <script src="{% static 'js/mobile-menu.js' %}"></script>
+</body>
+</html>

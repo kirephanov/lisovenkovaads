@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %} 
+    <div class="container-xl mt-5">
+        <h1 class="mb-4">Получить скрипт</h1>
+        <div class="card mb-5" style="padding-left: 15px; padding-right: 15px; background-color: #dee2ff;; border: none;">
+            <h5 class="mt-3">Интенсивность показов</h5>
+            <input type="range" class="form-range mt-3 mb-5" min="0" max="5" id="customRange2">
+        </div>
+        <form method="post">
+          {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Адрес сайта</label>
+                {{ form.script_url }}
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email</label>
+              {{ form.script_email }}
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Категория вашего сайта</label>
+                {{ form.script_category }}
+            </div>
+            <button type="submit" class="btn btn-primary mb-5" style="background-color: #7579FF;">Получить скрипт</button>
+          </form>
+{% endblock %}
